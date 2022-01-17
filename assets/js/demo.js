@@ -57,7 +57,7 @@ var DEMO = {
 		this.loadTerrain(inParameters);
 		
 		// Load textures		
-		var waterNormals = new THREE.ImageUtils.loadTexture('../img/waternormals.jpg');
+		var waterNormals = new THREE.ImageUtils.loadTexture('../assets/img/waternormals.jpg');
 		waterNormals.wrapS = waterNormals.wrapT = THREE.RepeatWrapping; 
 		
 		// Load filesdnd texture
