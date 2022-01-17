@@ -34,23 +34,24 @@ var DEMO = {
 		
 		this.ms_Camera = new THREE.PerspectiveCamera(55.0, WINDOW.ms_Width / WINDOW.ms_Height, 0.5, 3000000);
 		this.ms_Camera.position.set(0, Math.max(inParameters.width * 1.5, inParameters.height) / 8, -inParameters.height);
-		this.ms_Camera.lookAt(new THREE.Vector3(0, 200, 0));
+		this.ms_Camera.lookAt(new THREE.Vector3(0, -2000, 0));
 
 		this.ms_Raycaster = new THREE.Raycaster();
 		
-		// Initialize Orbit control		
+		// Initialize Orbit control	
+		/*	
 		this.ms_Controls = new THREE.OrbitControls(this.ms_Camera, this.ms_Renderer.domElement);
 		this.ms_Controls.userPan = false;
 		this.ms_Controls.userPanSpeed = 0.0;
 		this.ms_Controls.maxDistance = 5000.0;
-		this.ms_Controls.maxPolarAngle = Math.PI * 0.495;
+		this.ms_Controls.maxPolarAngle = Math.PI * 0.495; */
 	
 		// Add light
 		var directionalLight = new THREE.DirectionalLight(0xffffff, 1);
 		directionalLight.position.set(-567800000, -1056780000, 1267000);
 		this.ms_Scene.add(directionalLight);
 
-		this.ms_Scene.add(new THREE.DirectionalLightHelper(directionalLight, 600))
+		//this.ms_Scene.add(new THREE.DirectionalLightHelper(directionalLight, 600))
 		
 		// Create terrain
 		this.loadTerrain(inParameters);
@@ -84,7 +85,7 @@ var DEMO = {
 			alpha: 	1.0,
 			sunDirection: directionalLight.position.normalize(),
 			sunColor: 0xffffff,
-			waterColor: 0x001e0f,
+			waterColor: 0x001d36,
 			distortionScale: 50.0
 		});
 		var aMeshMirror = new THREE.Mesh(
@@ -95,6 +96,7 @@ var DEMO = {
 		aMeshMirror.rotation.x = - Math.PI * 0.5;
 		this.ms_Scene.add(aMeshMirror);
 	
+		/*
 		// Setup particles
 		this.ms_Particles = []
 		const partGeo = new THREE.Geometry()
@@ -121,7 +123,7 @@ var DEMO = {
 		})
 		partMesh = new THREE.Points(partGeo, partMat)
 		partMesh.position.z = -4
-		this.ms_Scene.add(partMesh)
+		this.ms_Scene.add(partMesh)*/
 
 		this.loadSkyBox();
 	},
@@ -215,7 +217,7 @@ var DEMO = {
 			this.ms_FilesDND.rotation.y += 0.01;
 		}
 		this.ms_Water.material.uniforms.time.value += 1.0 / 60.0;
-		this.ms_Controls.update();
+		//this.ms_Controls.update();
 
 		this.display();
 	},
